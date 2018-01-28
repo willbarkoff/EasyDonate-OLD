@@ -1,6 +1,12 @@
 function predefinedClicked(value) {
     $('#amountForm').val(value);
+    $("#amount").text(" $" + value + " ");
+    $("#continue").fadeIn();
 }
+
+// setTimeout(function () {
+//     $("#errorLoading").fadeIn;
+// }, 5000);
 
 $(document).ready(function(){
     $("#loading").fadeOut(function(){
@@ -13,13 +19,25 @@ $(document).ready(function(){
         key: pkey,
         image: '/img/8.png',
         locale: 'auto',
+        zipCode: true,
         token: function(token) {
-          // You can access the token ID with `token.id`.
-          // Get the token ID to your server-side code for use.
+            var donationValue = $("#amountForm").val()*100
+            $.post( "/charge", { stripeEmail: token.email, stripeToken: token.id, amount: donationValue}, function(data) {
+                $("#loading").fadeOut(function(){
+                    if(data == "<p>hex success</p>") {
+                        $("#paymentProcessed").fadeIn();
+                    } else {
+                        $("#errorProcessing").fadeIn();
+                    }
+                });
+            });
         }
-      });    
+      }); 
 
     document.getElementById('continue').addEventListener('click', function(e) {
+        $("#content").fadeOut(function(){
+            $("#loading").fadeIn();
+        });
         // Open Checkout with further options:
         var amount = $("#amountForm").val()*100
         if(amount >= 1) {    
@@ -39,6 +57,14 @@ $(document).ready(function(){
             $("#amountSelect").fadeIn(function(){
                 document.getElementById("amountSelect").focus();
             });
+            $("#continue").fadeOut(function(){
+                $("#amount").text(" ");
+                $("#continue").fadeIn();
+            })
         });
     });
+
+    document.getElementById('errorTryAgain').addEventListener('click', function(e) {
+        location.reload();
+    })
 });

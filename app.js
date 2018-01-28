@@ -13,10 +13,10 @@ app.get("/", (req, res) =>
   res.render("index.pug", {keyPublishable}));
 
 app.post("/charge", (req, res) => {
-  var amount = 500;
+  var amount = req.body.amount;
 
   stripe.customers.create({
-     email: req.body.stripeEmail,
+    email: req.body.stripeEmail,
     source: req.body.stripeToken
   })
   .then(customer =>

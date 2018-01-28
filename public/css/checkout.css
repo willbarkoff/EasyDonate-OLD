@@ -53,3 +53,15 @@ body {
 #publishablekey {
     display: none;
 }
+
+#loadingError {
+    display: none;
+}
+
+#continue {
+    display: none;
+}
+
+#paymentProcessed, #errorProcessing {
+    display: none;
+}

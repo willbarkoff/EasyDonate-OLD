@@ -23,6 +23,11 @@ html
 				h1
 					i.fa.fa-circle-o-notch.fa-spin
 				h2 Just a moment...	
+				h5#loadingError
+					strong Hmm... something seems to be wrong. 
+					| Try 
+					a(href="#" style="color: white") refreshing
+					|  the page.
 			#content
 				h1 Donate to Whiskey Bravo
 				.alert.alert-dismissible.alert-warning#error
@@ -39,9 +44,16 @@ html
 					button.btn.btn-lg.btn-info.btnPredefined#otherAmount Other...
 				#amountSelect
 					input.form-control.input-lg#amountForm(aria-label='Amount', type='number', placeholder="Type an amount in US Dollars...")
-				br
+					br
 				button.btn.btn-lg.btn-default#continue
 					| Donate
 					span#amount 
 					| by Credit Card 
 					i.fa.fa-credit-card
+			#paymentProcessed
+				h1 Thank you for your donation!
+				h3 Your payment was processed successfully.
+
+			#errorProcessing
+				h3 There was an error processing your payment.
+				button.btn.btn-lg.btn-info#errorTryAgain Try again...
