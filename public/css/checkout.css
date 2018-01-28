@@ -65,3 +65,30 @@ body {
 #paymentProcessed, #errorProcessing {
     display: none;
 }
+
+#footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-top: 1px, solid, white;
+}
+
+#footerNotice {
+    float: left;
+    text-align: left;
+}
+
+#footerLinks {
+    float: right;
+    text-align: right;
+}
+
+a {
+    color: white;
+}
+
+a:hover {
+    color: white;
+}

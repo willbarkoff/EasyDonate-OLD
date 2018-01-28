@@ -4,10 +4,6 @@ function predefinedClicked(value) {
     $("#continue").fadeIn();
 }
 
-// setTimeout(function () {
-//     $("#errorLoading").fadeIn;
-// }, 5000);
-
 $(document).ready(function(){
     $("#loading").fadeOut(function(){
         $("#content").fadeIn();
@@ -30,6 +26,9 @@ $(document).ready(function(){
                         $("#errorProcessing").fadeIn();
                     }
                 });
+                setTimeout(function () {
+                    $("#errorLoading").fadeIn;
+                }, 5000);
             });
         }
       }); 
