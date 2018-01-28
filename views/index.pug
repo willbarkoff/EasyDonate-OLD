@@ -8,10 +8,13 @@ html
 		script(src="https://checkout.stripe.com/checkout.js")
 		script(src="/js/checkout.js")
 	body
-		div#publishableKey #{keyPublishable}
+		.hidden
+			#publishableKey #{keyPublishable}
+			#websiteURL #{website}
+			#logoImage #{logo}
 		nav.navbar.navbar-expand-lg.navbar-light.bg-light
-			img(src="/img/8.png" height="18px")
-			a.navbar-brand(href='#')  Whiskey Bravo
+			img#logo(src="" height="18px")
+			a.navbar-brand(href='#')  #{name}
 			button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarColor01', aria-controls='navbarColor01', aria-expanded='false', aria-label='Toggle navigation')
 			ul.navbar-nav.mr-auto
 				li.nav-item.active
@@ -29,7 +32,7 @@ html
 					a(href="#" style="color: white") refreshing
 					|  the page.
 			#content
-				h1 Donate to Whiskey Bravo
+				h1 Donate to #{name}
 				.alert.alert-dismissible.alert-warning#error
 					h4.alert-heading Uh Oh...
 					p.mb-0
@@ -59,10 +62,8 @@ html
 				button.btn.btn-lg.btn-info#errorTryAgain Try again...
 		#footer
 			#footerNotice
-				p Whiskey Bravo is 
-					strong not
-					|  a 501(c)(3) charitable organazation. Your donation is not tax deductable.
+				p #{footerText}
 			#footerLinks
-				a(href="https://whiskeybravo.org") Main Website
+				a#footerLink Main Website
 				|  | 
 				a(href="/") Adknowledgements

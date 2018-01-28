@@ -5,11 +5,15 @@ function predefinedClicked(value) {
 }
 
 $(document).ready(function(){
+    var pkey = $("#publishableKey").text();
+    var logoURL = $("#logoImage").text();
+    var websiteURL = $("#websiteURL").text();
+    $("#logo").attr("src", logoURL);
+    $("#footerLink").attr("href", websiteURL);
+    
     $("#loading").fadeOut(function(){
         $("#content").fadeIn();
     });
-
-    var pkey = $("#publishableKey").text();
 
     var handler = StripeCheckout.configure({
         key: pkey,
