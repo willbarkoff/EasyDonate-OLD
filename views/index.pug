@@ -1,0 +1,47 @@
+html
+	head
+		link(href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0-beta.3/yeti/bootstrap.min.css", rel="stylesheet", integrity="sha384-xpQNcoacYF/4TKVs2uD3sXyaQYs49wxwEmeFNkOUgun6SLWdEbaCOv8hGaB9jLxt", crossorigin="anonymous")
+		link(rel='stylesheet', href='https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome-font-awesome.min.css')
+		link(rel='stylesheet', href='/css/checkout.css')
+
+		script(src="http://code.jquery.com/jquery-3.3.1.min.js")
+		script(src="https://checkout.stripe.com/checkout.js")
+		script(src="/js/checkout.js")
+	body
+		div#publishableKey #{keyPublishable}
+		nav.navbar.navbar-expand-lg.navbar-light.bg-light
+			img(src="/img/8.png" height="18px")
+			a.navbar-brand(href='#')  Whiskey Bravo
+			button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarColor01', aria-controls='navbarColor01', aria-expanded='false', aria-label='Toggle navigation')
+			ul.navbar-nav.mr-auto
+				li.nav-item.active
+					a.nav-link(href='#')
+						i.fa.fa-lock
+						span  Secure
+		.container
+			#loading
+				h1
+					i.fa.fa-circle-o-notch.fa-spin
+				h2 Just a moment...	
+			#content
+				h1 Donate to Whiskey Bravo
+				.alert.alert-dismissible.alert-warning#error
+					h4.alert-heading Uh Oh...
+					p.mb-0
+						| The donation amount must be at least 1 cent.
+				br
+				h4 Quick Donate:
+				#predefinedButtons
+					button.btn.btn-lg.btn-info.btnPredefined(onClick="predefinedClicked(19)") $19
+					button.btn.btn-lg.btn-info.btnPredefined(onClick="predefinedClicked(25)") $25
+					button.btn.btn-lg.btn-info.btnPredefined(onClick="predefinedClicked(50)") $50
+					button.btn.btn-lg.btn-info.btnPredefined(onClick="predefinedClicked(100)") $100
+					button.btn.btn-lg.btn-info.btnPredefined#otherAmount Other...
+				#amountSelect
+					input.form-control.input-lg#amountForm(aria-label='Amount', type='number', placeholder="Type an amount in US Dollars...")
+				br
+				button.btn.btn-lg.btn-default#continue
+					| Donate
+					span#amount 
+					| by Credit Card 
+					i.fa.fa-credit-card

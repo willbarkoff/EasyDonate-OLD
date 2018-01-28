@@ -1,0 +1,55 @@
+.mainProgress {
+    padding-bottom: 20px;
+}
+
+#amountSelect {
+    text-align: center;
+    width: 400px;
+    margin: auto;
+    padding-top: 10px;
+    display: none;
+}
+
+.btnPredefined {
+    padding-right: 10px;
+    padding-left: 10px;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-bottom: 5px;
+}
+
+#content {
+    display: none;
+}
+
+#loading{
+    text-align: center;
+}
+
+#error {
+    display: none;
+}
+
+.container {
+    padding-top: 10px;
+}
+
+body {
+    background-color: #008cba !important;
+    color: white;
+    text-align: center;
+}
+
+#amountForm {
+    color: white;
+    background-color: #008cba;
+    border: none !important;
+}
+
+#amountForm::placeholder {
+    color: rgba(255,255,255,0.8)
+}
+
+#publishablekey {
+    display: none;
+}
