@@ -60,10 +60,33 @@ html
 			#errorProcessing
 				h3 There was an error processing your payment.
 				button.btn.btn-lg.btn-info#errorTryAgain Try again...
+			
+			#adknowledgements.hidden
+				h1 EasyDonate
+				h4 Open source donation software
+				h6 Version #{version}
+				br
+				h5 Created by 
+					a(href="https://williambarkoff.com") William Barkoff
+				br
+				h5 Open Source Software
+				p EasyDonate is open source software. All of the code that powers EasyDonate is available on our 
+					a(href="https://github.com/nywillb/easydonate") GitHub repository
+					| .
+				h5 Acknowledgements 
+				p EasyDonate is built with these open source projects. Without them, what you see here would not be possible.
+				ul
+					li
+						a(href="https://expressjs.com/") Express.js
+					li
+						a(href="https://pugjs.org/") Pug
+				p In addition, what you see also would not be possible without our payments provider, 
+					a(href="https://stripe.com") Stripe
+					| .
 		#footer
 			#footerNotice
 				p #{footerText}
 			#footerLinks
 				a#footerLink Main Website
 				|  | 
-				a(href="/") Adknowledgements
+				a#adknowledgementsLink Adknowledgements

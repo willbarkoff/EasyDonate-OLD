@@ -1,21 +1,21 @@
 {
-  "name": "donate.whiskeybravo.org",
+  "name": "EasyDonate",
   "version": "1.0.0",
-  "description": "Whiskey Bravo donation page",
-  "main": "index.js",
+  "description": "Open source donation software",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nywillb/donate.whiskeybravo.org.git"
+    "url": "git+https://github.com/nywillb/easydonate.git"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nywillb/donate.whiskeybravo.org/issues"
+    "url": "https://github.com/nywillb/easydonate/issues"
   },
-  "homepage": "https://github.com/nywillb/donate.whiskeybravo.org#readme",
+  "homepage": "https://github.com/nywillb/easydonate#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.2",

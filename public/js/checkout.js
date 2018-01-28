@@ -70,4 +70,11 @@ $(document).ready(function(){
     document.getElementById('errorTryAgain').addEventListener('click', function(e) {
         location.reload();
     })
+
+    document.getElementById('adknowledgementsLink').addEventListener('click', function(e) {
+        $("#footer").fadeOut()
+        $("#content").fadeOut(function(){
+            $("#adknowledgements").fadeIn();
+        })
+    })
 });

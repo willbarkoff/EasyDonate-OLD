@@ -1,4 +1,7 @@
 const config = require("./config.js")
+const package = require('./package.json');
+
+const version = package.version;
 
 const port = config.port;
 
@@ -19,7 +22,7 @@ app.use(express.static('public'));
 app.use(require("body-parser").urlencoded({extended: false}));
 
 app.get("/", (req, res) =>
-	res.render("index.pug", {keyPublishable, website, footerText, name, logo}));
+	res.render("index.pug", {keyPublishable, website, footerText, name, logo, version}));
 
 app.post("/charge", (req, res) => {
 	var amount = req.body.amount;
