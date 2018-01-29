@@ -81,6 +81,8 @@ $(document).ready(function(){
     })
 
     document.getElementById('acknowledgementsLink').addEventListener('click', function(e) {
+        $("#paymentProcessed").fadeOut()
+        $("#errorProcessing").fadeOut()
         $("#footer").fadeOut()
         $("#content").fadeOut(function(){
             $("#acknowledgements").fadeIn();
