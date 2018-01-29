@@ -12,6 +12,7 @@ html
 			#publishableKey #{keyPublishable}
 			#websiteURL #{website}
 			#logoImage #{logo}
+			#name #{name}
 		nav.navbar.navbar-expand-lg.navbar-light.bg-light
 			img#logo(src="" height="18px")
 			a.navbar-brand(href='#')  #{name}
@@ -26,7 +27,7 @@ html
 				h1
 					i.fa.fa-circle-o-notch.fa-spin
 				h2 Just a moment...	
-				h5#loadingError
+				h5#loadingError.hidden
 					strong It seems that there was an issue processing your payment.  
 					| Try 
 					a(href="#" style="color: white") refreshing
@@ -35,33 +36,47 @@ html
 				h1 Donate to #{name}
 				.alert.alert-dismissible.alert-warning#error
 					h4.alert-heading Uh Oh...
-					p.mb-0
-						| The donation amount must be at least 1 cent.
+					p.mb-0#errorContent
+						| 
 				br
 				h4 Quick Donate:
 				#predefinedButtons
-					button.btn.btn-lg.btn-info.btnPredefined(onClick="predefinedClicked(19)") $19
+					button.btn.btn-lg.btn-info.btnPredefined(onClick="predefinedClicked(10)") $10
 					button.btn.btn-lg.btn-info.btnPredefined(onClick="predefinedClicked(25)") $25
 					button.btn.btn-lg.btn-info.btnPredefined(onClick="predefinedClicked(50)") $50
 					button.btn.btn-lg.btn-info.btnPredefined(onClick="predefinedClicked(100)") $100
 					button.btn.btn-lg.btn-info.btnPredefined#otherAmount Other...
-				#amountSelect
-					input.form-control.input-lg#amountForm(aria-label='Amount', type='number', placeholder="Type an amount in US Dollars...")
+				#amountSelect.hidden
+					input.form-control.input-lg#amountForm.blendForm(aria-label='Amount', type='number', placeholder="Type an amount in US Dollars...")
 					br
+				.donationOptions
+					.form-check
+						label.form-check-label#inHonorWrapper
+							input.form-check-input#inHonor(type='checkbox')
+							| I'd like to make my donation in honor of someone.
+					.form-check
+						label.form-check-label#anonymousWrapper
+							input.form-check-input#anonymous(type='checkbox')
+							| I'd like to keep my donation anonymous.
+					br
+					.form-group
+						input.blendForm#donorName(class="form-control" aria-describedby="emailHelp" placeholder="Type your name" type="text")
+
+
 				button.btn.btn-lg.btn-default#continue
 					| Donate
 					span#amount 
 					| by Credit Card 
 					i.fa.fa-credit-card
-			#paymentProcessed
+			#paymentProcessed.hidden
 				h1 Thank you for your donation!
 				h3 Your payment was processed successfully.
 
-			#errorProcessing
+			#errorProcessing.hidden
 				h3 There was an error processing your payment.
 				button.btn.btn-lg.btn-info#errorTryAgain Try again...
 			
-			#adknowledgements.hidden
+			#acknowledgements.hidden
 				h1 EasyDonate
 				h4 Open source donation software
 				h6 Version #{version}
@@ -89,4 +104,4 @@ html
 			#footerLinks
 				a#footerLink Main Website
 				|  | 
-				a#adknowledgementsLink Adknowledgements
+				a#acknowledgementsLink Acknowledgements

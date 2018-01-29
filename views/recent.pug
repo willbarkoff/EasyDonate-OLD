@@ -1,0 +1,22 @@
+html
+	head
+		link(href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0-beta.3/yeti/bootstrap.min.css", rel="stylesheet", integrity="sha384-xpQNcoacYF/4TKVs2uD3sXyaQYs49wxwEmeFNkOUgun6SLWdEbaCOv8hGaB9jLxt", crossorigin="anonymous")
+		link(rel='stylesheet', href='https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome-font-awesome.min.css')
+		link(rel='stylesheet', href='/css/checkout.css')
+
+		script(src="http://code.jquery.com/jquery-3.3.1.min.js")
+
+	body
+		#content(style="display: inherit")
+			if recentName 
+				p Most Recent Donation
+				h4
+					i.fa.fa-user
+					|  #{recentName}
+				h6
+					i.fa.fa-money
+					|  $#{recentAmount}
+			else
+				h4 Donate now by pressing the button below
+		#footer
+			a.btn.btn-xs.btn-info(href="/") Donate Now

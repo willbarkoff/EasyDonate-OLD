@@ -40,14 +40,18 @@ body {
     text-align: center;
 }
 
-#amountForm {
+.blendForm {
     color: white;
     background-color: #008cba;
-    border: none !important;
 }
 
-#amountForm::placeholder {
-    color: rgba(255,255,255,0.8)
+.blendForm:focus {
+    color: white;
+    background-color: #008cba;
+}
+
+.blendForm::placeholder {
+    color: rgba(255,255,255, 1) !important;
 }
 
 .hidden {
@@ -91,4 +95,11 @@ a {
 
 a:hover {
     color: white;
+}
+
+.donationOptions {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 400px;
+    margin: auto;
 }

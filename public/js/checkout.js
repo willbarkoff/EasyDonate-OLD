@@ -8,6 +8,7 @@ $(document).ready(function(){
     var pkey = $("#publishableKey").text();
     var logoURL = $("#logoImage").text();
     var websiteURL = $("#websiteURL").text();
+    var name = $("#name").text();
     $("#logo").attr("src", logoURL);
     $("#footerLink").attr("href", websiteURL);
     
@@ -17,12 +18,19 @@ $(document).ready(function(){
 
     var handler = StripeCheckout.configure({
         key: pkey,
-        image: '/img/8.png',
+        image: logoURL,
         locale: 'auto',
         zipCode: true,
         token: function(token) {
+            var donorName =  $('#donorName').val();
+            if(donorName == "") {
+                donorName = "Anonymous"
+            }
             var donationValue = $("#amountForm").val()*100
-            $.post( "/charge", { stripeEmail: token.email, stripeToken: token.id, amount: donationValue}, function(data) {
+            $("#content").fadeOut(function(){
+                $("#loading").fadeIn();
+            });
+            $.post( "/charge", { stripeEmail: token.email, stripeToken: token.id, amount: donationValue, name: donorName}, function(data) {
                 $("#loading").fadeOut(function(){
                     if(data == "<p>hex success</p>") {
                         $("#paymentProcessed").fadeIn();
@@ -38,20 +46,21 @@ $(document).ready(function(){
       }); 
 
     document.getElementById('continue').addEventListener('click', function(e) {
-        $("#content").fadeOut(function(){
-            $("#loading").fadeIn();
-        });
         // Open Checkout with further options:
         var amount = $("#amountForm").val()*100
-        if(amount >= 1) {    
+        if(amount < 1) {   
+            $("#errorContent").text("The donation amount must be at least 1 cent.")
+            $("#error").fadeIn(); 
+            e.preventDefault();
+        } else if((!$('#anonymous').is(":checked")) && ($('#donorName').val() == "")) {
+            $("#errorContent").text("You must type a name.")
+            $("#error").fadeIn();
+        } else {
             handler.open({
-                name: 'Whiskey Bravo',
+                name: name,
                 description: 'Donation',
                 amount: amount
             });
-            e.preventDefault();
-        } else {
-            $("#error").fadeIn();
         }
     });
 
@@ -71,10 +80,33 @@ $(document).ready(function(){
         location.reload();
     })
 
-    document.getElementById('adknowledgementsLink').addEventListener('click', function(e) {
+    document.getElementById('acknowledgementsLink').addEventListener('click', function(e) {
         $("#footer").fadeOut()
         $("#content").fadeOut(function(){
-            $("#adknowledgements").fadeIn();
+            $("#acknowledgements").fadeIn();
         })
     })
+
+    $('#inHonor').on('input', function() { 
+        if ($('#inHonor').is(":checked")){
+            $('#donorName').val("");
+            $('#donorName').attr("placeholder", "Type the honoree's name");
+            $('#anonymousWrapper').fadeOut();
+        } else {
+            $('#donorName').val("")
+            $('#donorName').attr("placeholder", "Type your name");
+            $('#anonymousWrapper').fadeIn();
+        }
+    });
+    $('#anonymous').on('input', function() { 
+        if ($('#anonymous').is(":checked")){
+            $('#donorName').fadeOut(function(){
+                $('#donorName').val("");
+            }); 
+            $('#inHonorWrapper').fadeOut();
+        } else {
+            $('#donorName').fadeIn();
+            $('#inHonorWrapper').fadeIn();
+        }
+    });
 });
